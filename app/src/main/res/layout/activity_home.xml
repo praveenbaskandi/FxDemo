@@ -30,7 +30,7 @@
             android:layout_marginTop="@dimen/margin20dp"
             android:elevation="@dimen/margin3dp"
             android:background="@color/white"
-            app:cardCornerRadius="@dimen/margin4dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvHeading">
@@ -120,14 +120,14 @@
             android:layout_marginHorizontal="@dimen/margin20dp"
             android:elevation="@dimen/margin3dp"
             android:layout_marginTop="@dimen/margin20dp"
-            app:cardCornerRadius="@dimen/margin4dp"
+            app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:background="@color/white"
+                android:background="@drawable/back_valid_click"
                 android:layout_height="wrap_content">
 
                 <TextView
