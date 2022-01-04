@@ -50,7 +50,7 @@ Based on:
 - This image show movie description
 - Show movie detail of the selected movie.
 
-<img src="screen_shot/screen_shot_1.png" width="150" height="300"/>
+<img src="screen_shot/screen_shot_2.png" width="150" height="300"/>
 
 
 
