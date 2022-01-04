@@ -72,6 +72,6 @@ class HomeActivity : BaseActivity(), View.OnClickListener {
         //creating a pending intent using the intent
         val pi = PendingIntent.getBroadcast(mContext, 0, i, 0)
         //setting the repeating alarm that will be fired every day
-        am.setRepeating(AlarmManager.RTC, time, AlarmManager.INTERVAL_FIFTEEN_MINUTES, pi)
+        am.setRepeating(AlarmManager.RTC, time, AlarmManager.INTERVAL_DAY, pi)
     }
 }

@@ -38,7 +38,7 @@ Based on:
 ### Home Screen
 
 - This image show Home screen which shows the Fx price on Uniswap platform
-- Data is fetching from uniswap Graph Api
+- Data is fetching from Uniswap Graph Api
 - On click of show validator list you can see validator list in the next screen
 
 <img src="screen_shot/screen_shot_1.png" width="150" height="300"/>
@@ -48,8 +48,8 @@ Based on:
 ### Validator List
 
 - This image show validator list in Function X platform
-- List contains detils regarding validator
-- On click of any validator you can see detils of the validator and recent blocks from the validator in the list.
+- List contains details regarding validator
+- On click of any validator you can see details of the validator and recent blocks from the validator in the list.
 
 <img src="screen_shot/screen_shot_2.png" width="150" height="300"/>
 
@@ -68,9 +68,9 @@ Based on:
 ### Notify Notification
 
 - This image show the notification in shows the price of Fx on Uniswap
-- This notification comes eveyday at 12 PM
+- This notification comes everyday at 12 PM
 - On notification click user navigate to home screen
-- It hits uniswap API and get Fx price and show it in a form of notification.
+- It hits Uniswap API and get Fx price and show it in a form of notification.
 
 <img src="screen_shot/screen_shot_4.png" width="150" height="300"/>
 

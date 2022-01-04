@@ -1,6 +1,6 @@
 query
 validatorDetailQuery($chainId: String!, $operateAddress: String!) {
-    validator(chainId: $chainId, operateAddress: $operateAddress) {
+    validator(chainId: $chainId operateAddress: $operateAddress) {
         chainId
         validatorName
         validatorBlock

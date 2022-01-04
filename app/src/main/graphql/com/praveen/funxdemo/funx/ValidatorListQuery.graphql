@@ -1,5 +1,5 @@
 query ValidatorListQuery($chainId: String!, $type: Int!) {
-    validatorPage(chainId: $chainId, type: $type) {
+    validatorPage(chainId: $chainId, type: $type, page: {index: 1, size: 50},) {
         totalCount
         validators {
             rank
