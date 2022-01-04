@@ -24,7 +24,6 @@ Based on:
 ## Support 
 - Minimum SDK [21]
 - Targeted SDK [31]
-- Night Mode Support
 
 
 ## Getting started
