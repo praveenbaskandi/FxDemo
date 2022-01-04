@@ -37,18 +37,19 @@ Based on:
 
 ### Home Screen
 
-- This image show List of movies fetching from API
-- View show movie poster in grid format.
+- This image show Home screen which shows the Fx price on Uniswap platform
+- Data is fetching from uniswap Graph Api
+- On click of show validator list you can see validator list in the next screen
 
 <img src="screen_shot/screen_shot_1.png" width="150" height="300"/>
 
 
 
-
 ### Validator List
 
-- This image show movie description
-- Show movie detail of the selected movie.
+- This image show validator list in Function X platform
+- List contains detils regarding validator
+- On click of any validator you can see detils of the validator and recent blocks from the validator in the list.
 
 <img src="screen_shot/screen_shot_2.png" width="150" height="300"/>
 
@@ -56,8 +57,9 @@ Based on:
 
 ### Validator Detail
 
-- This image show movie description
-- Show movie detail of the selected movie.
+- This image validator details with recent block list.
+- Details contains data associated with the validator and blocks by them
+- Block also contains some data to it.
 
 <img src="screen_shot/screen_shot_3.png" width="150" height="300"/>
 
