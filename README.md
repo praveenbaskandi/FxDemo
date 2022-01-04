@@ -63,3 +63,14 @@ Based on:
 
 <img src="screen_shot/screen_shot_3.png" width="150" height="300"/>
 
+
+
+### Notify Notification
+
+- This image show the notification in shows the price of Fx on Uniswap
+- This notification comes eveyday at 12 PM
+- On notification click user navigate to home screen
+- It hits uniswap API and get Fx price and show it in a form of notification.
+
+<img src="screen_shot/screen_shot_4.png" width="150" height="300"/>
+
