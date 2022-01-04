@@ -1,0 +1,2 @@
+# FxDemo
+Fx coin
