@@ -35,28 +35,29 @@ Based on:
 
 ## Screen Shot
 
-### Show movie list
+### Home Screen
 
 - This image show List of movies fetching from API
 - View show movie poster in grid format.
 
-<img src="screenshot/Screenshot_list.png" width="150" height="300"/>
+<img src="screen_shot/screen_shot_1.png" width="150" height="300"/>
 
 
 
 
-### show movie description
+### Validator List
 
 - This image show movie description
 - Show movie detail of the selected movie.
 
-<img src="screenshot/Screenshot_detail.png" width="150" height="300"/>
+<img src="screen_shot/screen_shot_1.png" width="150" height="300"/>
 
 
 
-### show internet fails or api fails
+### Validator Detail
 
-- This image show the ui of api fails or no internet
-- This will happens in case there is no internet or fail to fetch data from the api
+- This image show movie description
+- Show movie detail of the selected movie.
 
-<img src="screenshot/Screenshot_error.png" width="150" height="300"/>
+<img src="screen_shot/screen_shot_3.png" width="150" height="300"/>
+
