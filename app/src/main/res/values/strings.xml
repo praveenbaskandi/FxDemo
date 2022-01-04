@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">FunXDemo</string>
+    <string name="funxdemo">Function X Demo</string>
+    <string name="function_x_price">Function X price on Uniswap</string>
+    <string name="show_validator_list">Show validator list</string>
+    <string name="voting_power">Voting Power</string>
+    <string name="current_apy">Current APY</string>
+    <string name="self_bonded">Self Bonded</string>
+    <string name="current_rate">Current Comm. Rate</string>
+    <string name="number">Number</string>
+    <string name="chain_id">Chain Id</string>
+    <string name="city">City</string>
+    <string name="height">Height</string>
+    <string name="tx">tx</string>
+    <string name="commission_rate">Commission Rate</string>
+    <string name="valid_name">Validator name</string>
+    <string name="validator_details">Validator Details</string>
+    <string name="blocks">Blocks</string>
+    <string name="validator_list">Validator List</string>
+</resources>

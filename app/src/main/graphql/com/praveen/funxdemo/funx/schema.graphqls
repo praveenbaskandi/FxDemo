@@ -1,0 +1,718 @@
+type Query {
+  """
+   统计数据
+  """
+  statics: Statics
+
+  """
+   查询首页数据
+  """
+  index(blockSize: Int, txSize: Int): Index
+
+  """
+   单个区块
+  """
+  block(chainId: String!, height: Long!): Block
+
+  """
+   区块分页
+  """
+  blockPage(chainId: String!, page: Page, operateAddress: String): BlockPage
+
+  """
+   交易分页
+  """
+  txPage(chainId: String, height: Long, accountAddress: String, operateAddress: String, page: Page): TxPage
+
+  """
+   单个交易
+  """
+  tx(chainId: String!, hash: String!): Tx
+
+  """
+   验证人分页
+  """
+  validatorPage(chainId: String!, type: Int!, page: Page): ValidatorPage
+
+  """
+   查询单个验证人
+  """
+  validator(chainId: String!, operateAddress: String!): Validator
+
+  """
+   查询账户信息
+  """
+  account(chainId: String!, accountAddress: String!): Account
+
+  """
+   全局搜索
+  """
+  search(data: String!): Search
+
+  """
+   跨链转账状态(0:待处理, 1:确认中-以太坊已确认, 2:确认中-core链上已经发现交易, 3:确认中-core链上已经确认, 4:Success-payment链上已经确认, 5:Failed-core链上交易发送失败)
+  """
+  searchDepositStatus(hash: String!, sourceChain: String!): Int
+
+  """
+   跨链提现状态(0:待处理, 1:确认中-core链已确认, 2:确认中-core链已发起批量提现, 3:确认中-core链正在对批量提现签名, 4:Success-以太坊已确认, 302:确认中-payment链已确认)
+  """
+  searchWithdrawStatus(hash: String!, chainId: String!, sourceChain: String!): Int
+
+  """
+   委托记录分页
+  """
+  delegateRecordPage(operateAddress: String!, page: Page): DelegateRecordPage
+}
+
+"""
+ ----
+ 首页统计数据
+"""
+type Statics {
+  """
+   全网交易总条目数
+  """
+  totalTxsCount: Int
+
+  """
+   全网质押总数
+  """
+  totalPledge: String
+
+  """
+   全网激活地址数量
+  """
+  totalAddress: Int
+
+  """
+   总质押量
+  """
+  totalSupply: String
+
+  """
+   core 链数据
+  """
+  fxcore: Chain
+
+  """
+   pay 链数据
+  """
+  pundix: Chain
+
+  """
+   dex 链数据
+  """
+  fxdex: Chain
+
+  """
+   质押单位
+  """
+  unit: String
+}
+
+type Chain {
+  """
+   网络
+  """
+  network: String
+
+  """
+   分组
+  """
+  group: String
+
+  """
+   已同步的区块数量
+  """
+  blocks: Long
+
+  """
+   已同步的交易数量
+  """
+  txsCount: Int
+
+  """
+   质押数量
+  """
+  pledge: String
+
+  """
+   质押单位
+  """
+  unit: String
+
+  """
+   链 ID
+  """
+  chainId: String
+
+  """
+   验证人数量
+  """
+  validators: Int
+
+  """
+   供应量
+  """
+  supply: String
+}
+
+"""
+Long type
+"""
+scalar Long
+
+"""
+ 首页数据
+"""
+type Index {
+  """
+   统计数据
+  """
+  statics: Statics
+
+  """
+   最新区块列表
+  """
+  blocks: [Block]
+
+  """
+   最新交易列表
+  """
+  txs: [Tx]
+}
+
+"""
+ 区块
+"""
+type Block {
+  """
+   链 ID
+  """
+  chainId: String
+
+  """
+   高度
+  """
+  height: Long
+
+  """
+   区块 hash
+  """
+  hash: String
+
+  """
+   交易数量
+  """
+  txCount: Int
+
+  """
+   出块时间
+  """
+  time: Long
+
+  """
+   出块验证人名称
+  """
+  validatorName: String
+
+  """
+   字节数
+  """
+  bytes: Long
+
+  """
+   验证人地址
+  """
+  operateAddress: String
+
+  """
+   费率
+  """
+  fees: [Amount]
+
+  """
+   暂未启用该参数
+  """
+  latestTransaction: [Tx]
+}
+
+"""
+ 金额
+"""
+type Amount {
+  """
+   数额
+  """
+  amount: String
+
+  """
+   费率类型(0:fxcore 网络消耗, 1:跨链转账以太坊网络消耗, 2:跨链提现中继收取费率)
+  """
+  type: Int
+
+  """
+   币种符号
+  """
+  symbol: String
+}
+
+"""
+ 交易
+"""
+type Tx {
+  """
+   链 ID
+  """
+  chainId: String
+
+  """
+   交易 hash
+  """
+  hash: String
+
+  """
+   所属区块
+  """
+  block: Long
+
+  """
+   允许使用的最大燃气值
+  """
+  gasWanted: Long
+
+  """
+   实际使用的燃气值
+  """
+  gasUsed: Long
+
+  """
+   交易序列
+  """
+  nonce: Long
+
+  """
+   出块时间
+  """
+  txTime: Long
+
+  """
+   手续费列表
+  """
+  fees: [Amount]
+
+  """
+   交易列表
+  """
+  msgs: [Msg]
+
+  """
+   交易结果(0:成功, 1:失败)
+  """
+  result: Int
+
+  """
+   日志信息
+  """
+  log: String
+}
+
+"""
+ 交易内的消息
+"""
+type Msg {
+  """
+   交易 hash
+  """
+  hash: String
+
+  """
+   消息类型
+  """
+  type: String
+
+  """
+   消息数据(json 字符串)
+  """
+  data: String
+
+  """
+   金额
+  """
+  amount: String
+
+  """
+   金额符号
+  """
+  symbol: String
+
+  """
+   来源地址
+  """
+  from: String
+
+  """
+   来源地址为验证人地址，此处为验证人昵称
+  """
+  fromValidatorName: String
+
+  """
+   去向地址
+  """
+  to: String
+
+  """
+   接收地址为验证人地址，此处为验证人昵称
+  """
+  toValidatorName: String
+
+  """
+   关联外部链
+  """
+  sourceChain: String
+}
+
+type BlockPage {
+  pageIndex: Int
+
+  pageCount: Int
+
+  totalCount: Int
+
+  blocks: [Block]
+}
+
+"""
+ 分页
+"""
+input Page {
+  index: Int
+
+  size: Int
+}
+
+type TxPage {
+  pageIndex: Int
+
+  pageCount: Int
+
+  totalCount: Int
+
+  txs: [Tx]
+}
+
+"""
+ 验证人分页
+"""
+type ValidatorPage {
+  pageIndex: Int
+
+  pageCount: Int
+
+  totalCount: Int
+
+  validators: [Validator]
+}
+
+"""
+ 验证人
+"""
+type Validator {
+  """
+   顺序编号(注意查单个验证人详情时，该字段为 null)
+  """
+  rank: Int
+
+  """
+   链 ID
+  """
+  chainId: String
+
+  """
+   验证人名称
+  """
+  validatorName: String
+
+  """
+   创建验证人的区块高度
+  """
+  validatorBlock: Long
+
+  """
+   验证人地址
+  """
+  operateAddress: String
+
+  """
+   验证人普通账户地址
+  """
+  accountAddress: String
+
+  """
+   验证人出块信息
+  """
+  proposer: String
+
+  """
+   验证者当前的佣金比例
+  """
+  commission: BigDecimal
+
+  """
+   验证者当前的委托token总数
+  """
+  bondedTokens: String
+
+  """
+   验证者自我委托数量百分比
+  """
+  selfBondedPercent: BigDecimal
+
+  """
+   验证者的 voting power
+  """
+  votingPower: BigDecimal
+
+  """
+   投票权的百分比
+  """
+  votingPowerPercent: BigDecimal
+
+  """
+   验证者年化收益率百分比 - 已乘以100%直接展示
+  """
+  rewards: BigDecimal
+
+  """
+   验证者累计佣金收益
+  """
+  accumulatedCommission: BigDecimal
+
+  """
+   当前链的基础币种
+  """
+  unit: String
+
+  """
+   验证者状态 0-->不是有效的验证者, 1-->有效的验证者
+  """
+  status: Int
+
+  """
+   验证者自委托数量
+  """
+  selfBondedTokens: String
+
+  """
+   验证者填写的详细描述
+  """
+  description: String
+
+  """
+   验证者填写的网址
+  """
+  webSite: String
+
+  """
+   验证者联系方式
+  """
+  securityContact: String
+
+  """
+   验证者收取最大佣金比例
+  """
+  commissionMaxRate: BigDecimal
+
+  """
+   佣金每日最大可修改比例
+  """
+  maxDailyCommissionChange: BigDecimal
+
+  """
+   佣金最后修改时间
+  """
+  lastCommissionChange: Long
+
+  """
+   用户委托额度 token 总数
+  """
+  delegatedTokens: String
+
+  """
+   用户正在解绑中的 token 总数
+  """
+  undelegatedTokens: String
+
+  """
+   用户正在重新委托的 token 总数
+  """
+  redelegatedTokens: String
+}
+
+"""
+Built-in java.math.BigDecimal
+"""
+scalar BigDecimal
+
+"""
+ 账户信息
+"""
+type Account {
+  """
+   链 ID
+  """
+  chainId: String
+
+  """
+   账户地址
+  """
+  accountAddress: String
+
+  """
+   链基础币种符号
+  """
+  symbol: String
+
+  """
+   余额列表
+  """
+  balances: [Balance]
+}
+
+"""
+ 余额
+"""
+type Balance {
+  """
+   金额符号
+  """
+  symbol: String
+
+  """
+   金额
+  """
+  amount: String
+}
+
+"""
+ 全局搜索
+"""
+type Search {
+  """
+   搜索数据
+  """
+  data: String
+
+  """
+   搜索命中列表
+  """
+  items: [SearchItem]
+}
+
+"""
+ 搜索列表
+"""
+type SearchItem {
+  """
+   链 ID
+  """
+  chainId: String
+
+  """
+   类型(0:block, 1:tx, 2:address, 3:validator_address)
+  """
+  type: Int
+
+  """
+   搜索数据
+  """
+  data: String
+}
+
+"""
+ 委托记录分页
+"""
+type DelegateRecordPage {
+  pageIndex: Int
+
+  pageCount: Int
+
+  totalCount: Int
+
+  delegateRecords: [DelegateRecord]
+}
+
+"""
+ 委托记录
+"""
+type DelegateRecord {
+  """
+   类型(1:undelegated, 2:redelegated)
+  """
+  type: Int
+
+  """
+   金额
+  """
+  amount: String
+
+  """
+   单位
+  """
+  symbol: String
+
+  """
+   完成时间
+  """
+  completionTime: Long
+
+  """
+   剩余天数
+  """
+  remainingDays: Int
+
+  """
+   委托地址
+  """
+  delegateAddress: String
+
+  """
+   验证人地址
+  """
+  operateAddress: String
+
+  """
+   验证人昵称
+  """
+  validatorName: String
+
+  """
+   转移委托的新验证人地址
+  """
+  newOperateAddress: String
+
+  """
+   转移委托的新验证人昵称
+  """
+  newValidatorName: String
+
+  """
+   交易 hash
+  """
+  txHash: String
+}
+
+"""
+ ----
+ 查询范围
+"""
+input Range {
+  start: Long
+
+  end: Long
+}
+
+schema {
+  query: Query
+}

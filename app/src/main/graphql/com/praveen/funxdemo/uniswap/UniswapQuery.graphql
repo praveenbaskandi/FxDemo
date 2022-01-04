@@ -1,0 +1,10 @@
+query UniswapFunPrice($token: String!, $time: Int!)
+{
+    tokenHourDatas(first: 1, skip: 0, where: {token: $token, periodStartUnix_gt: $time}, orderBy: periodStartUnix, orderDirection: asc) {
+        periodStartUnix
+        high
+        low
+        open
+        close
+    }
+}

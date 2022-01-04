@@ -1,0 +1,23 @@
+query blockPage($chainId: String!, $operateAddress: String!)
+{
+    blockPage(chainId: $chainId, page: {index: 3, size: 10}, operateAddress: $operateAddress) {
+        pageIndex
+        pageCount
+        totalCount
+        blocks {
+            chainId
+            height
+            hash
+            txCount
+            time
+            validatorName
+            bytes
+            operateAddress
+            fees {
+                amount
+                symbol
+                type
+            }
+        }
+    }
+}

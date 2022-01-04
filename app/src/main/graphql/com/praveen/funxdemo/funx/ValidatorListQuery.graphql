@@ -1,0 +1,21 @@
+query ValidatorListQuery($chainId: String!, $type: Int!) {
+    validatorPage(chainId: $chainId, type: $type) {
+        totalCount
+        validators {
+            rank
+            chainId
+            validatorName
+            operateAddress
+            commission
+            bondedTokens
+            selfBondedPercent
+            selfBondedTokens
+            votingPower
+            votingPowerPercent
+            rewards
+            accumulatedCommission
+            unit
+            status
+        }
+    }
+}

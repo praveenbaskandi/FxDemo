@@ -1,0 +1,30 @@
+query
+validatorDetailQuery($chainId: String!, $operateAddress: String!) {
+    validator(chainId: $chainId, operateAddress: $operateAddress) {
+        chainId
+        validatorName
+        validatorBlock
+        operateAddress
+        accountAddress
+        proposer
+        commission
+        bondedTokens
+        selfBondedPercent
+        votingPower
+        votingPowerPercent
+        rewards
+        accumulatedCommission
+        unit
+        status
+        selfBondedTokens
+        description
+        webSite
+        commissionMaxRate
+        maxDailyCommissionChange
+        lastCommissionChange
+        delegatedTokens
+        undelegatedTokens
+        redelegatedTokens
+        securityContact
+    }
+}
